@@ -35,7 +35,7 @@ def add_contact(args, book: AddressBook):
     return "Contact added."
 
 @input_error
-def change_contact(args, book: AddressBook):
+def change_phone(args, book: AddressBook):
     name, old_phone, new_phone = args
     record = book.find(name)
     if record is None:
@@ -92,7 +92,7 @@ def show_birthday(args, book: AddressBook):
     return f"{name}: {record.birthday}"
 
 @input_error
-def birthdays(args, book: AddressBook):
+def get_birthdays(args, book: AddressBook):
     days = int(args[0]) if args else 7
     upcoming = book.get_upcoming_birthdays(days)
     if not upcoming:
@@ -105,7 +105,7 @@ def birthdays(args, book: AddressBook):
     return "\n".join(result)
 
 @input_error
-def find(args, book: AddressBook):
+def find_contact(args, book: AddressBook):
     query = " ".join(args)
     if not query:
         raise ValueError("Enter search query")
